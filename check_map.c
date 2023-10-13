@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:26:48 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/13 15:06:31 by escastel         ###   ########.fr       */
+/*   Updated: 2023/10/13 16:23:55 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,11 @@ int	check_content(t_slong *game)
 		while (game->map[y][++x])
 		{
 			if (game->map[y][x] == 'P')
+			{
+				game->player_position->x = x;
+				game->player_position->y = y;
 				game->p_map++;
+			}
 			if (game->map[y][x] == 'E')
 				game->e_map++;
 			if (game->map[y][x] == 'C')
@@ -105,7 +109,7 @@ int	check_rectangular_map(t_slong *game)
 	return (1);
 }
 
-void	check_path(char **tab, t_point size, t_point cur, t_slong	*game)
+void	check_path(char **tab, t_point size, t_point *cur, t_slong	*game)
 {
 	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x)
 		return ;
