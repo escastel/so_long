@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:07:54 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/13 16:24:05 by escastel         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:32:47 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,49 @@ typedef struct s_point
 
 typedef struct s_slong
 {
-	char	**map;
-	char	**map_cpy;
-	int		h;
-	int		w;
-	t_point	*player_position;
-	int		p_map;
-	int		e_map;
-	int		c_map;
-	int		e_path;
-	int		c_path;
+	char			**map;
+	char			**map_cpy;
+	t_point			p_pst;
+	t_point			e_pst;
+	int				fd;
+	int				row;
+	int				col;
+	int				x;
+	int				y;
+	int				p_map;
+	int				e_map;
+	int				c_map;
+	int				e_path;
+	int				c_path;
+	int				eat_c;
+	mlx_t			*mlx;
+	mlx_texture_t	*txt_player_right;
+	mlx_image_t		*img_player_right;
+	mlx_texture_t	*txt_player_frnt;
+	mlx_image_t		*img_player_frnt;
+	mlx_texture_t	*txt_player_left;
+	mlx_image_t		*img_player_left;
+	mlx_texture_t	*txt_player_back;
+	mlx_image_t		*img_player_back;
+	mlx_texture_t	*txt_colection;
+	mlx_image_t		*img_colection;
+	mlx_texture_t	*txt_wall;
+	mlx_image_t		*img_wall;
+	mlx_texture_t	*txt_floor;
+	mlx_image_t		*img_floor;
+	mlx_texture_t	*txt_player_exit;
+	mlx_image_t		*img_player_exit;
+	mlx_texture_t	*txt_exit_close;
+	mlx_image_t		*img_exit_close;
+	mlx_texture_t	*txt_exit_open;
+	mlx_image_t		*img_exit_open;
 }	t_slong;
 
-void	save_map(t_slong *game);
-int		check_extension(char *arg);
-int		check_walls(t_slong	*game);
-int		check_content(t_slong *game);
-int		check_rectangular_map(t_slong *game);
-void	check_path(char **tab, t_point size, t_point *cur, t_slong	*game);
+int		save_map(t_slong *game, char *argv);
+int		check_map(t_slong *g, char *argv);
+void	draw_map(t_slong *g);
+void	keyhook(mlx_key_data_t keydata, void *param);
+void	ft_clean(t_slong *g);
+void	ft_close(void *param);
 
 #endif

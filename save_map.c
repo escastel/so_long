@@ -6,71 +6,71 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 14:33:00 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/13 16:16:54 by escastel         ###   ########.fr       */
+/*   Updated: 2023/10/24 15:24:34 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static void	save_map_row(t_slong *game)
+static int	save_map_row(t_slong *g, char *argv)
 {
-	int		fd;
 	char	*line;
-	int		row;
 
-	fd = open("map.ber", O_RDONLY);
-	line = get_next_line(fd);
+	g->fd = open(argv, O_RDONLY);
+	line = get_next_line(g->fd);
 	if (!line)
-		return (free(line));
-	row = 0;
+		return (ft_clean(g), ft_printf("Error\nEl archivo no es válido"), 0);
+	g->row = 0;
 	while (line)
 	{
-		row++;
+		g->row++;
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(g->fd);
 	}
-	close(fd);
-	game->map = ft_calloc((row + 1), sizeof(char *));
-	if (!game->map)
-		return ;
-	game->map_cpy = ft_calloc((row + 1), sizeof(char *));
-	if (!game->map_cpy)
-		return ;
-	game->h = row;
-	printf("Lineas de mi mapa: %d", game->h);
+	close(g->fd);
+	g->map = ft_calloc((g->row + 1), sizeof(char *));
+	if (!g->map)
+		return (ft_clean(g), 0);
+	g->map_cpy = ft_calloc((g->row + 1), sizeof(char *));
+	if (!g->map_cpy)
+		return (ft_clean(g), 0);
+	return (1);
 }
 
-static void	save_map_col(t_slong *game)
+static int	save_map_col(t_slong *g, char *argv)
 {
-	int		fd;
 	char	*line;
 	int		y;
 
-	fd = open("map.ber", O_RDONLY);
-	line = get_next_line(fd);
+	g->fd = open(argv, O_RDONLY);
+	line = get_next_line(g->fd);
 	y = 0;
 	while (line)
 	{
-		game->w = ft_strlen(line);
-		if (line[game->w - 1] != '\n')
-				game->w++;
-		game->map[y] = ft_calloc(game->w, sizeof(char));
-		if (!game->map)
-			return ;
-		game->map_cpy[y] = ft_calloc(game->w, sizeof(char));
-		if (!game->map_cpy)
-			return ;
-		ft_strlcpy(game->map[y], line, game->w);
-		ft_strlcpy(game->map_cpy[y], line, game->w);
+		g->col = ft_strlen(line);
+		if (line[g->col - 1] != '\n')
+				g->col++;
+		g->map[y] = ft_calloc(g->col, sizeof(char));
+		if (!g->map)
+			return (ft_clean(g), 0);
+		g->map_cpy[y] = ft_calloc(g->col, sizeof(char));
+		if (!g->map_cpy)
+			return (ft_clean(g), 0);
+		ft_strlcpy(g->map[y], line, g->col);
+		ft_strlcpy(g->map_cpy[y], line, g->col);
 		y++;
 		free(line);
-		line = get_next_line(fd);
+		line = get_next_line(g->fd);
 	}
-	printf("Columnas de mi mapa: %d", game->w);
+	close(g->fd);
+	return (1);
 }
 
-void	save_map(t_slong *game)
+int	save_map(t_slong *g, char *argv)
 {
-	save_map_row(game);
-	save_map_col(game);
+	if (!save_map_row(g, argv))
+		return (0);
+	if (!save_map_col(g, argv))
+		return (0);
+	return (1);
 }
