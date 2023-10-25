@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:09:09 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/25 12:04:02 by escastel         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:58:22 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,25 +14,25 @@
 
 static void	png_to_txt_img(t_slong *g)
 {
-	g->txt_player_right = mlx_load_png("./sprite/player_right.png");
+	g->txt_player_right = mlx_load_png("../sprite/player_right.png");
 	g->img_player_right = mlx_texture_to_image(g->mlx, g->txt_player_right);
-	g->txt_player_frnt = mlx_load_png("./sprite/player_front.png");
+	g->txt_player_frnt = mlx_load_png("../sprite/player_front.png");
 	g->img_player_frnt = mlx_texture_to_image(g->mlx, g->txt_player_frnt);
-	g->txt_player_left = mlx_load_png("./sprite/player_left.png");
+	g->txt_player_left = mlx_load_png("../sprite/player_left.png");
 	g->img_player_left = mlx_texture_to_image(g->mlx, g->txt_player_left);
-	g->txt_player_back = mlx_load_png("./sprite/player_back.png");
+	g->txt_player_back = mlx_load_png("../sprite/player_back.png");
 	g->img_player_back = mlx_texture_to_image(g->mlx, g->txt_player_back);
-	g->txt_colection = mlx_load_png("./sprite/colection.png");
+	g->txt_colection = mlx_load_png("../sprite/colection.png");
 	g->img_colection = mlx_texture_to_image(g->mlx, g->txt_colection);
-	g->txt_wall = mlx_load_png("./sprite/wall.png");
+	g->txt_wall = mlx_load_png("../sprite/wall.png");
 	g->img_wall = mlx_texture_to_image(g->mlx, g->txt_wall);
-	g->txt_floor = mlx_load_png("./sprite/floor.png");
+	g->txt_floor = mlx_load_png("../sprite/floor.png");
 	g->img_floor = mlx_texture_to_image(g->mlx, g->txt_floor);
-	g->txt_player_exit = mlx_load_png("./sprite/player_exit.png");
+	g->txt_player_exit = mlx_load_png("../sprite/player_exit.png");
 	g->img_player_exit = mlx_texture_to_image(g->mlx, g->txt_player_exit);
-	g->txt_exit_close = mlx_load_png("./sprite/exit_close.png");
+	g->txt_exit_close = mlx_load_png("../sprite/exit_close.png");
 	g->img_exit_close = mlx_texture_to_image(g->mlx, g->txt_exit_close);
-	g->txt_exit_open = mlx_load_png("./sprite/exit_open.png");
+	g->txt_exit_open = mlx_load_png("../sprite/exit_open.png");
 	g->img_exit_open = mlx_texture_to_image(g->mlx, g->txt_exit_open);
 }
 

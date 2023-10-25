@@ -6,14 +6,14 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/02 15:07:54 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/25 12:30:36 by escastel         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:55:48 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
-# include "MLX42/include/MLX42/MLX42.h"
-# include "libft/libft.h"
+# include "../MLX42/include/MLX42/MLX42.h"
+# include "../libft/libft.h"
 
 typedef struct s_point
 {
