@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 15:09:09 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/24 15:55:27 by escastel         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:04:02 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,27 @@ static void	clean_txt(t_slong *g)
 	mlx_delete_texture(g->txt_exit_open);
 }
 
-static void	img_to_window(t_slong *g)
+static int	img_to_window_error(t_slong *g, int x, int y, char c)
+{
+	if (c == '1')
+		if (mlx_image_to_window(g->mlx, g->img_wall, x * 50, y * 50) < 0)
+			return (0);
+	if (c == '0')
+		if (mlx_image_to_window(g->mlx, g->img_floor, x * 50, y * 50) < 0)
+			return (0);
+	if (c == 'P')
+		if (mlx_image_to_window(g->mlx, g->img_player_frnt, x * 50, y * 50) < 0)
+			return (0);
+	if (c == 'E')
+		if (mlx_image_to_window(g->mlx, g->img_exit_close, x * 50, y * 50) < 0)
+			return (0);
+	if (c == 'C')
+		if (mlx_image_to_window(g->mlx, g->img_colection, x * 50, y * 50) < 0)
+			return (0);
+	return (1);
+}
+
+static int	img_to_window(t_slong *g)
 {
 	int	y;
 	int	x;
@@ -60,24 +80,19 @@ static void	img_to_window(t_slong *g)
 	{
 		x = -1;
 		while (++x < g->col)
-		{
-			if (g->map[y][x] == '1')
-				mlx_image_to_window(g->mlx, g->img_wall, x * 50, y * 50);
-			if (g->map[y][x] == '0')
-				mlx_image_to_window(g->mlx, g->img_floor, x * 50, y * 50);
-			if (g->map[y][x] == 'P')
-				mlx_image_to_window(g->mlx, g->img_player_frnt, x * 50, y * 50);
-			if (g->map[y][x] == 'E')
-				mlx_image_to_window(g->mlx, g->img_exit_close, x * 50, y * 50);
-			if (g->map[y][x] == 'C')
-				mlx_image_to_window(g->mlx, g->img_colection, x * 50, y * 50);
-		}
+			if (!img_to_window_error(g, x, y, g->map[y][x]))
+				return (0);
 	}
+	return (1);
 }
 
-void	draw_map(t_slong *g)
+int	draw_map(t_slong *g)
 {
 	png_to_txt_img(g);
 	clean_txt(g);
-	img_to_window(g);
+	if (!img_error(g))
+		return (0);
+	if (!img_to_window(g))
+		return (0);
+	return (1);
 }

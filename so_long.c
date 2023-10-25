@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:11:38 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/24 15:24:50 by escastel         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:30:50 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,22 @@ void	ft_lek(void)
 	system("leaks -q a.out");
 }
 
+int	img_error(t_slong *g)
+{
+	if (!g->img_player_right || !g->img_player_left
+		|| !g->img_player_frnt || !g->img_player_back
+		|| !g->img_colection || !g->img_wall
+		|| !g->img_floor || !g->img_player_exit
+		|| !g->img_exit_close || !g->img_exit_open)
+		return (ft_clean(g), 0);
+	return (1);
+}
+
 void	ft_close(void *param)
 {
 	t_slong	*g;
 
 	g = (t_slong *)param;
-	ft_clean(g);
 	mlx_close_window(g->mlx);
 }
 
@@ -58,6 +68,7 @@ void	init_struct(t_slong *g)
 	g->c_path = 0;
 	g->e_path = 0;
 	g->eat_c = 0;
+	g->count = 0;
 }
 
 int32_t	main(int argc, char **argv)
@@ -76,10 +87,13 @@ int32_t	main(int argc, char **argv)
 	if (!check_map(g, argv[1]))
 		return (0);
 	g->mlx = mlx_init((g->col - 1) * 50, g->row * 50, "Test", false);
-	draw_map(g);
+	if (!g->mlx)
+		return (ft_clean(g), 1);
+	if (!draw_map(g))
+		return (0);
 	mlx_key_hook(g->mlx, &keyhook, g);
-	mlx_close_hook(g->mlx, ft_close, g);
+	mlx_close_hook(g->mlx, &ft_close, g);
 	mlx_loop(g->mlx);
 	mlx_terminate(g->mlx);
-	return (0);
+	return (ft_clean(g), 1);
 }

@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:00:38 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/24 15:59:41 by escastel         ###   ########.fr       */
+/*   Updated: 2023/10/25 12:35:29 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	p_position1(t_slong *g, int y, int x, mlx_image_t *img)
 		return ;
 	if (g->map[y][x] == 'E')
 	{
+		g->count++;
+		ft_printf("Numero de movimiento: %d\n", g->count);
 		g->map[g->p_pst.y][g->p_pst.x] = '0';
 		mlx_image_to_window(g->mlx, g->img_floor,
 			g->p_pst.x * 50, g->p_pst.y * 50);
@@ -52,6 +54,8 @@ static void	p_position2(t_slong *g, int y, int x, mlx_image_t *img)
 		}
 		g->p_pst.x = x;
 		g->p_pst.y = y;
+		g->count++;
+		ft_printf("Numero de movimiento: %d\n", g->count);
 	}
 	p_position3(g, y, x, img);
 }
@@ -79,6 +83,8 @@ static void	p_position3(t_slong *g, int y, int x, mlx_image_t *img)
 				g->e_pst.x * 50, g->e_pst.y * 50);
 		g->p_pst.x = x;
 		g->p_pst.y = y;
+		g->count++;
+		ft_printf("Numero de movimiento: %d\n", g->count);
 	}
 }
 
