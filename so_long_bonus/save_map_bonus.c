@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:28:25 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/25 13:28:28 by escastel         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:27:19 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	save_map_col(t_slong *g, char *argv)
 	{
 		g->col = ft_strlen(line);
 		if (line[g->col - 1] != '\n')
-				g->col++;
+			g->col++;
 		g->map[y] = ft_calloc(g->col, sizeof(char));
 		if (!g->map)
 			return (ft_clean(g), 0);

@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:26:48 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/25 16:37:25 by escastel         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:30:35 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ int	check_map(t_slong *g, char *argv)
 		return (ft_printf("Error\nFallos en el contenido"), 0);
 	}
 	check_path(g->map_cpy, (t_point){(g->col - 1), g->row}, g->p_pst, g);
-	if (g->c_path != g->c_map)
+	if (g->c_path != g->c_map || g->e_path != g->e_map)
 	{
 		ft_clean(g);
 		return (ft_printf("Error\nNo hay un camino correcto"), 0);
