@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:11:38 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/25 12:30:50 by escastel         ###   ########.fr       */
+/*   Updated: 2023/10/26 12:24:28 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ int32_t	main(int argc, char **argv)
 		return (0);
 	if (!check_map(g, argv[1]))
 		return (0);
-	g->mlx = mlx_init((g->col - 1) * 50, g->row * 50, "Test", false);
+	g->mlx = mlx_init((g->col - 1) * 50, g->row * 50, "So_long", false);
 	if (!g->mlx)
 		return (ft_clean(g), 1);
 	if (!draw_map(g))
