@@ -6,16 +6,11 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 15:11:38 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/27 14:17:41 by escastel         ###   ########.fr       */
+/*   Updated: 2023/11/02 15:15:57 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-/* void	ft_lek(void)
-{
-	system("leaks -q solong");
-} */
 
 int	img_error(t_slong *g)
 {
@@ -79,7 +74,6 @@ int32_t	main(int argc, char **argv)
 	{
 		return (ft_printf("Error\nSe requiere argumento\n"), 0);
 	}
-	/* atexit(ft_lek); */
 	g = ft_calloc(1, sizeof(t_slong));
 	init_struct(g);
 	if (!save_map(g, argv[1]))

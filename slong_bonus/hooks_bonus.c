@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/25 13:28:37 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/27 14:15:18 by escastel         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:48:54 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static void	p_position3(t_slong *g, int y, int x, mlx_image_t *img);
 static void	p_position1(t_slong *g, int y, int x, mlx_image_t *img)
 {
 	if (g->map[y][x] == 'S')
-		return (ft_printf("\tHas muerto :(\n"), ft_close(g));
+		return (ft_printf("\n\tHas muerto :(\n"), ft_close(g));
 	if (g->map[y][x] == '1')
 		return ;
 	if (g->map[y][x] == 'E')
@@ -33,7 +33,7 @@ static void	p_position1(t_slong *g, int y, int x, mlx_image_t *img)
 			mlx_image_to_window(g->mlx, g->img_player_exit,
 				g->e_pst.x * 50, g->e_pst.y * 50);
 		else
-			return (ft_printf("\tGracias por jugar :)\n"), ft_close(g));
+			return (ft_printf("\n\tGracias por jugar :)\n"), ft_close(g));
 		g->p_pst.x = x;
 		g->p_pst.y = y;
 	}

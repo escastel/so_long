@@ -48,7 +48,7 @@ all: 			$(NAME)
 
 bonus:			$(NAME_BONUS)
 
-$(NAME_BONUS): 	$(OBJECTS_BONUS) $(LIBFT) $(MLX)
+$(NAME_BONUS): 	$(OBJECTS_BONUS) $(LIBFT) $(MLX42)
 					ar rcs $(SOLONGBONUS) $(OBJECTS_BONUS)
 					gcc $(FLAGS) $(SOLONGBONUS) $(MLX42) $(LIBFT) $(LIB_SYS) -o $(NAME_BONUS)
 

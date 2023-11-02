@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 12:00:38 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/27 14:33:54 by escastel         ###   ########.fr       */
+/*   Updated: 2023/11/02 14:44:31 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	p_position1(t_slong *g, int y, int x, mlx_image_t *img)
 			mlx_image_to_window(g->mlx, g->img_player_exit,
 				g->e_pst.x * 50, g->e_pst.y * 50);
 		else
-			return (ft_printf("\tGracias por jugar :)\n"), ft_close(g));
+			return (ft_printf("\n\tGracias por jugar :)\n"), ft_close(g));
 		g->p_pst.x = x;
 		g->p_pst.y = y;
 	}
