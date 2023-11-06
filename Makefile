@@ -1,6 +1,6 @@
-NAME = solong
+NAME = so_long
 
-NAME_BONUS = solongbonus
+NAME_BONUS = so_long_bonus
 
 SOLONG = so_long.a
 
@@ -53,14 +53,14 @@ $(NAME_BONUS): 	$(OBJECTS_BONUS) $(LIBFT) $(MLX42)
 					gcc $(FLAGS) $(SOLONGBONUS) $(MLX42) $(LIBFT) $(LIB_SYS) -o $(NAME_BONUS)
 
 clean:
-				rm -f $(OBJECTS) $(OBJECTS_BONUS)
-				make clean -s -C ./MLX42
-				make clean -s -C ./libft
+				@ rm -f $(OBJECTS) $(OBJECTS_BONUS)
+				@ make clean -s -C ./MLX42
+				@ make clean -s -C ./libft
 
 fclean:
-				rm -f $(NAME_BONUS) $(NAME) $(OBJECTS) $(OBJECTS_BONUS) $(SOLONG) $(SOLONGBONUS) $(LIBFT) $(MLX42)
-				make fclean -s -C ./MLX42
-				make fclean -s -C ./libft
+				@ rm -f $(NAME_BONUS) $(NAME) $(OBJECTS) $(OBJECTS_BONUS) $(SOLONG) $(SOLONGBONUS) $(LIBFT) $(MLX42)
+				@ make fclean -s -C ./MLX42
+				@ make fclean -s -C ./libft
 
 re: 			fclean all
 

@@ -6,16 +6,11 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:26:48 by escastel          #+#    #+#             */
-/*   Updated: 2023/10/27 14:51:36 by escastel         ###   ########.fr       */
+/*   Updated: 2023/11/06 14:26:17 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
-
-/*
-Tomando en cuenta que return (0) es que se ha encontrado 
-un fallo y que return (1) no :
-*/
 
 static int	check_extension_and_rectangular_map(t_slong *g, char *argv)
 {
