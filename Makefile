@@ -12,7 +12,7 @@ slong/hooks.c \
 slong/save_map.c \
 slong/so_long.c 
 
-FILES_BONUS = slong_bonus/check_content.c \
+FILES_BONUS = slong_bonus/check_content_bonus.c \
 slong_bonus/check_map_bonus.c \
 slong_bonus/draw_map_bonus.c \
 slong_bonus/hooks_bonus.c \
@@ -31,37 +31,40 @@ MLX42 = ./MLX42/libmlx42.a
 
 LIB_SYS = -Iinclude -lglfw -L"/Users/escastel/.brew/opt/glfw/lib/"
 
-$(NAME):		$(OBJECTS) $(LIBFT) $(MLX42)
-					ar rcs $(SOLONG) $(OBJECTS)
-					gcc $(FLAGS) $(SOLONG) $(MLX42) $(LIBFT) $(LIB_SYS) -o $(NAME)
+$(NAME):			$(OBJECTS) $(LIBFT) $(MLX42)
+						ar rcs $(SOLONG) $(OBJECTS)
+						gcc $(FLAGS) $(SOLONG) $(MLX42) $(LIBFT) $(LIB_SYS) -o $(NAME)
+
+$(OBJECTS):			slong/%.o : slong/%.c 
+						gcc $(FLAGS) -c $< -o $@
 
 $(OBJECTS_BONUS):	slong_bonus/%.o : slong_bonus/%.c 
 						gcc $(FLAGS) -c $< -o $@
 
 $(LIBFT):
-				make -s -C ./libft
+						make -s -C ./libft
 
 $(MLX42):
-				make -s -C ./MLX42
+						make -s -C ./MLX42
 
-all: 			$(NAME)
+all: 				$(NAME)
 
-bonus:			$(NAME_BONUS)
+bonus:				$(NAME_BONUS)
 
-$(NAME_BONUS): 	$(OBJECTS_BONUS) $(LIBFT) $(MLX42)
-					ar rcs $(SOLONGBONUS) $(OBJECTS_BONUS)
-					gcc $(FLAGS) $(SOLONGBONUS) $(MLX42) $(LIBFT) $(LIB_SYS) -o $(NAME_BONUS)
+$(NAME_BONUS): 		$(OBJECTS_BONUS) $(LIBFT) $(MLX42)
+						ar rcs $(SOLONGBONUS) $(OBJECTS_BONUS)
+						gcc $(FLAGS) $(SOLONGBONUS) $(MLX42) $(LIBFT) $(LIB_SYS) -o $(NAME_BONUS)
 
 clean:
-				@ rm -f $(OBJECTS) $(OBJECTS_BONUS)
-				@ make clean -s -C ./MLX42
-				@ make clean -s -C ./libft
+						@ rm -f $(OBJECTS) $(OBJECTS_BONUS)
+						@ make clean -s -C ./MLX42
+						@ make clean -s -C ./libft
 
 fclean:
-				@ rm -f $(NAME_BONUS) $(NAME) $(OBJECTS) $(OBJECTS_BONUS) $(SOLONG) $(SOLONGBONUS) $(LIBFT) $(MLX42)
-				@ make fclean -s -C ./MLX42
-				@ make fclean -s -C ./libft
+						@ rm -f $(NAME_BONUS) $(NAME) $(OBJECTS) $(OBJECTS_BONUS) $(SOLONG) $(SOLONGBONUS) $(LIBFT) $(MLX42)
+						@ make fclean -s -C ./MLX42
+						@ make fclean -s -C ./libft
 
-re: 			fclean all
+re: fclean all
 
 .PHONY: all re clean fclean bonus
