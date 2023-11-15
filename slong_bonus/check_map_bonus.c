@@ -6,7 +6,7 @@
 /*   By: escastel <escastel@42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:26:48 by escastel          #+#    #+#             */
-/*   Updated: 2023/11/06 14:26:17 by escastel         ###   ########.fr       */
+/*   Updated: 2023/11/15 14:51:27 by escastel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ static void	check_path(char **tab, t_point size, t_point cur, t_slong	*g)
 {
 	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x)
 		return ;
-	if (tab[cur.y][cur.x] == '1' || tab[cur.y][cur.x] == '*')
+	if (tab[cur.y][cur.x] == '1' ||
+		tab[cur.y][cur.x] == 'S' || tab[cur.y][cur.x] == '*')
 		return ;
 	if (tab[cur.y][cur.x] == 'C')
 		g->c_path++;
