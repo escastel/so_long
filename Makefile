@@ -31,6 +31,8 @@ MLX42 = ./MLX42/libmlx42.a
 
 LIB_SYS = -Iinclude -lglfw -L"/Users/escastel/.brew/opt/glfw/lib/"
 
+all: $(NAME)
+
 $(NAME):			$(OBJECTS) $(LIBFT) $(MLX42)
 						ar rcs $(SOLONG) $(OBJECTS)
 						gcc $(FLAGS) $(SOLONG) $(MLX42) $(LIBFT) $(LIB_SYS) -o $(NAME)
