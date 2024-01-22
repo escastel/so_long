@@ -34,28 +34,28 @@ LIB_SYS = -Iinclude -lglfw -L"/Users/escastel/.brew/opt/glfw/lib/"
 all: $(NAME)
 
 $(NAME):			$(OBJECTS) $(LIBFT) $(MLX42)
-						ar rcs $(SOLONG) $(OBJECTS)
-						gcc $(FLAGS) $(SOLONG) $(MLX42) $(LIBFT) $(LIB_SYS) -o $(NAME)
+						@ ar rcs $(SOLONG) $(OBJECTS)
+						@ gcc $(FLAGS) $(SOLONG) $(MLX42) $(LIBFT) $(LIB_SYS) -o $(NAME)
 
 $(OBJECTS):			slong/%.o : slong/%.c 
-						gcc $(FLAGS) -c $< -o $@
+						@ gcc $(FLAGS) -c $< -o $@
 
 $(OBJECTS_BONUS):	slong_bonus/%.o : slong_bonus/%.c 
-						gcc $(FLAGS) -c $< -o $@
+						@ gcc $(FLAGS) -c $< -o $@
 
 $(LIBFT):
-						make -s -C ./libft
+						@ make -s -C ./libft
 
 $(MLX42):
-						make -s -C ./MLX42
+						@ make -s -C ./MLX42
 
 all: 				$(NAME)
 
 bonus:				$(NAME_BONUS)
 
 $(NAME_BONUS): 		$(OBJECTS_BONUS) $(LIBFT) $(MLX42)
-						ar rcs $(SOLONGBONUS) $(OBJECTS_BONUS)
-						gcc $(FLAGS) $(SOLONGBONUS) $(MLX42) $(LIBFT) $(LIB_SYS) -o $(NAME_BONUS)
+						@ ar rcs $(SOLONGBONUS) $(OBJECTS_BONUS)
+						@ gcc $(FLAGS) $(SOLONGBONUS) $(MLX42) $(LIBFT) $(LIB_SYS) -o $(NAME_BONUS)
 
 clean:
 						@ rm -f $(OBJECTS) $(OBJECTS_BONUS)
